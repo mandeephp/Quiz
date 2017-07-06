@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+	{% block content %}
+
+		 <div class="well">
+        
+            <form action="" method="post">{% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Submit Feedback" />
+            </form>
+
+            <script>
+					$('#myButton').click(function(){
+				  var bjpFan=localStorage['bjpFan'];
+				  var userid = //get your user id in some way you can
+				  var total = parseInt(localStorage['total']);
+				  $.ajax({
+				    url: "/poll/score/",
+				    type:"GET",
+				    data: {total:total,userid:userid}
+				  }).done(function(data){
+				     alert(data);//do what you want to do with response
+				  });
+			</script>
+        </div>
+
+	{% endblock %}

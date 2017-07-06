@@ -1,0 +1,7 @@
+chardet==3.0.4
+Django==1.9
+django-csvimport==2.8
+django-pdfkit==0.2.1
+django-pure-pagination==0.3.0
+pdfkit==0.6.0
+pytz==2017.2

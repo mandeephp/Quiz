@@ -1,0 +1,27 @@
+{%  extends 'base.html' %}
+
+
+{% block content %}
+        <div class="col-md-5 col-md-offset-3 ">
+            <div class="well register">
+                <div class="center" ">
+                    <form method="POST" action="" enctype="multipart/form-data">
+                        {% csrf_token %}            
+                        <label>Username</label>
+                        <p>{{ form.username }}</p>
+                        <label>Password</label>
+                        <p >{{ form.password }}</p>
+                        <label>Confirm Password</label>
+                        <p>{{ form.password2 }}</p>
+                        <label >Email-ID</label>
+                        <p >{{ form.email }}</p>
+                        <label >Confirm Email</label>
+                        <p>{{ form.email2 }}</p>
+                        <input type="Submit" value="Register"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endblock content %}
+
+

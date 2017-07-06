@@ -1,0 +1,82 @@
+{% extends 'parent.html' %}
+{% block content %}
+<!-- Time Counter -->
+	<div class="col-lg-12">
+			<div class= "well timecounter"><h3 class="text-danger headingcounter">Time left :- <span id="timer"></span></h3>
+						<script>
+								document.getElementById('timer').innerHTML =
+								  1 + ":" + 00;
+								startTimer();
+
+								function startTimer() {
+								  var presentTime = document.getElementById('timer').innerHTML;
+								  var timeArray = presentTime.split(/[:]+/);
+								  var m = timeArray[0];
+								  var s = checkSecond((timeArray[1] - 1));
+								  if(s==59){m=m-1}
+								  //if(m<0){alert('timer completed')}
+								  
+								  document.getElementById('timer').innerHTML =
+								    m + ":" + s;
+								  setTimeout(startTimer, 1000);
+								}
+
+								function checkSecond(sec) {
+								  if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+								  if (sec < 0) {sec = "59"};
+								  return sec;
+								}
+						</script>
+			</div>
+	</div>
+
+<!-- To redirect to Another Url After Counter Time Is Over -->
+ 	<script type="text/JavaScript">
+      	setTimeout("location.href = '{% url 'Networking_Advance' %}';",58995);
+ 	</script>
+
+ 	 <script>
+		history.pushState(null, null, document.title);
+		window.addEventListener('popstate', function () {
+		    history.pushState(null, null, document.title);
+		});
+ 	</script>
+	<div class="col-lg-10 col-lg-offset-1">
+		
+			{% for i in q %}
+				<div class="well">
+					<ol>
+						<h4 class="text-danger">{{i.Question}}</h4>
+						<form method="POST" action="{% url 'solutionNWA' %}" id="myform" name="mainForm">
+						{% csrf_token %}
+							<li>
+								<input type="radio" name="an" id="choice1" value="{{i.choice1}}"/><label>{{i.choice1}}</label>
+							</li>
+							<li>
+								<input type="radio" name="an" id="choice2" value="{{i.choice2}}"/><label>{{i.choice2}}</label>
+							</li>
+							<li>
+								<input type="radio" name="an" id="choice3" value="{{i.choice3}}"/><label>{{i.choice3}}</label>
+							</li>
+							<li>
+								<input type="radio" name="an" id="choice4" value="{{i.choice4}}"/><label>{{i.choice4}}</label>
+							</li>
+							<button type="submit"  class="btn btn-primary" name="terms" id="disableit" >Submit</button>
+
+						</form>
+						<span id="result"></span>
+						<a href="{% url 'Networking_Advance' %}"><button type="submit" class="btn btn-primary refresh" disable ="check" id="disableit" >Next</button> </a>
+					</ol>
+					</br>
+				<!-- 	<script type="text/javascript">
+						$('#myform input').on('change', function() {
+	   					alert($('input[name=an]:checked', '#myform').val()); 
+						});
+					</script> -->
+				</div>
+	</div>
+
+		{% endfor %}
+		{% endblock content %}
+
+

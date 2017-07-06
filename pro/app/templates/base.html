@@ -1,0 +1,98 @@
+ <!DOCTYPE html>
+{% load statici18n %}
+{% load staticfiles %}
+ <html>
+
+ {% block head %}
+ 	<head>
+ 	<title>{% block title %}Quiz Portal{% endblock %} </title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'css/jquery.countdown.css' %}">
+	<script src="{% static 'js/jquery.plugin.min.js' %}"></script>
+	<script src="{% static 'js/jquery.countdown.js' %}"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<link rel="icon" href={% static 'images/icons/favicon.png' %} type="image/x-icon"/>
+ 	</head>
+ {% endblock head %}
+ <body>
+ 		{% block navbar %}
+			 	{% if user.is_authenticated %}
+					 <nav class="navbar navbar-inverse">
+					    <div class="container-fluid">
+					        <div class="navbar-header">
+					            <a class="navbar-brand" href="{% url 'index' %}">Quiz Portal</a>
+					        </div>
+					        <ul class="nav navbar-nav">
+					            <li class="dropdown">
+					                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Computer Science
+					        <span class="caret"></span></a>
+					                <ul class="dropdown-menu">
+					                    <li><a href="{% url 'Computer_Science' %}">Beginner</a></li>
+					                    <li><a href="{% url 'Computer_Science_Intermediate' %}">Intermediate</a></li>
+					                    <li><a href="{% url 'Computer_Science_Advance' %}">Advance</a></li>
+					                </ul>
+					            </li>
+					            <li class="dropdown">
+					                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Linux
+					        <span class="caret"></span></a>
+					                <ul class="dropdown-menu">
+					                    <li><a href="{% url 'Linux' %}">Beginner</a></li>
+					                    <li><a href="{% url 'Linux_Intermediate' %}">Intermediate</a></li>
+					                    <li><a href="{% url 'Linux_Advance' %}">Advance</a></li>
+					                </ul>
+					            </li>
+					            <li class="dropdown">
+					                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Networking
+					        <span class="caret"></span></a>
+					                <ul class="dropdown-menu">
+					                    <li><a href="{% url 'Networking' %}">Beginner</a></li>
+					                    <li><a href="{% url 'Networking_Intermediate' %}">Intermediate</a></li>
+					                    <li><a href="{% url 'Networking_Advance' %}">Advance</a></li>
+					                </ul>
+					            </li>
+					            <li class="dropdown">
+					                <a class="dropdown-toggle" data-toggle="dropdown" href="#">EP
+					        <span class="caret"></span></a>
+					                <ul class="dropdown-menu">
+					                    <li><a href="#">Beginner</a></li>
+					                    <li><a href="#">Intermediate</a></li>
+					                    <li><a href="#">Advance</a></li>
+					                </ul>
+					           </li>
+					        </ul>
+					        <h3><p class="nomargin">Welcome {{user}}</li></p>
+					    </div>
+					</nav>
+				{% else %}
+					<nav class="navbar navbar-inverse">
+						  <div class="container-fluid">
+						    	<div class="navbar-header">
+						      		<a class="navbar-brand" href="{% url 'index' %}" >QUIZ Portal</a>
+						    	</div>
+
+						    	<ul class="nav navbar-nav">
+						      		<li class="active"><a href="{% url 'signup' %}">Sign Up</a></li>
+						      		<li><a href="{% url 'login' %}">Login</a></li>
+						    	</ul>
+						  </div>
+					</nav>
+				{% endif %}
+
+		{% endblock navbar %}
+
+ 	 	{% block content %}
+
+
+	 	{% endblock %}
+
+ </body>
+ </html>
+

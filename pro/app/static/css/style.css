@@ -1,0 +1,34 @@
+#id_username {
+	width: 100%;
+}
+
+#id_password {
+	width: 100%;
+}
+
+#id_password2 {
+	width: 100%;
+}
+
+#id_email {
+	width: 100%;
+}
+
+
+#id_email2 {
+	width: 100%;
+}
+
+
+#disableit {
+	float: left;
+	margin-left: 18px;
+	width: 7%;
+}
+
+.nomargin {
+	margin-top: -6px;
+	margin-bottom: 0px;
+	float: right;
+	color: #337AB7;
+}
